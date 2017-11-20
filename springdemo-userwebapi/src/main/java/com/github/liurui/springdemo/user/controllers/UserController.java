@@ -40,6 +40,6 @@ public class UserController {
                 }
             }
         }
-        return new User(1, "刘锐");
+        return new User(1, "刘锐 " + id);
     }
 }

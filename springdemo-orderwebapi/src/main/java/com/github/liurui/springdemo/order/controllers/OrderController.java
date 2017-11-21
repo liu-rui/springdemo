@@ -2,6 +2,7 @@ package com.github.liurui.springdemo.order.controllers;
 
 import com.github.liurui.springdemo.order.entities.Order;
 import com.github.liurui.springdemo.order.entities.User;
+import com.github.liurui.springdemo.order.services.CityService;
 import com.github.liurui.springdemo.order.services.UserService;
 import com.google.common.collect.Maps;
 import io.swagger.annotations.Api;
@@ -21,6 +22,8 @@ public class OrderController {
     public static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
     @Autowired
     UserService userService;
+    @Autowired
+    CityService cityService;
 
     @RequestMapping(method = RequestMethod.POST)
     public Order create(@ApiParam(name = "userId", value = "用户编码", required = true)
@@ -31,6 +34,8 @@ public class OrderController {
                                 float amount) {
         User user = userService.get(userId);
         LOGGER.error("controller  {}" , user);
+        LOGGER.error("controller  {}" , userService.login("sd" , "sdd"));
+        LOGGER.error("controller  {}", cityService.get(String.valueOf(userId)));
         return new Order(1, Long.valueOf(userId), user.getName(), amount);
     }
 }

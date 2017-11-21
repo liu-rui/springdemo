@@ -17,6 +17,7 @@
         <module>springdemo-hystrixdashboard</module>
         <module>springdemo-turbine</module>
         <module>springdemo-newswebapi</module>
+        <module>springdemo-commondatawebapi</module>
     </modules>
     <packaging>pom</packaging>
     <name>springdemo</name>

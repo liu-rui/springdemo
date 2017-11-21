@@ -24,14 +24,29 @@ public class UserService {
         long start = System.currentTimeMillis();
         User user = restTemplate.getForObject("http://user/user/{1}", User.class, id);
 
-        LOGGER.error("service  {} escaped:{}" , user , System.currentTimeMillis() - start);
+        LOGGER.error("service get {} escaped:{}" , user , System.currentTimeMillis() - start);
         return user;
     }
 
     public User getFallback(long id) {
         User user = new User(-1, "error");
 
-        LOGGER.error("broker {}" , user);
+        LOGGER.error("broker getFallback {}" , user);
         return user;
+    }
+
+
+    @HystrixCommand(fallbackMethod = "loginFallback")
+    public  String login(String name , String password){
+        long start = System.currentTimeMillis();
+        String info = restTemplate.getForObject("http://user/user/login?name={0}&password={1}", String.class, name,password);
+        LOGGER.error("service login {} escaped:{}" , info , System.currentTimeMillis() - start);
+        return info;
+    }
+
+    public  String loginFallback(String name , String password){
+        String ret =  String.format("%s %s fallback" , name,  password);
+        LOGGER.error("broker loginFallback {}" , ret);
+        return ret;
     }
 }

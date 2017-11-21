@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: CommonData
+server:
+  port: 8095
+restApi:
+  swagger:
+    title: springdemo-基本信息webapi
+    version: 1
+    description: 基本信息webapi!!!!
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/

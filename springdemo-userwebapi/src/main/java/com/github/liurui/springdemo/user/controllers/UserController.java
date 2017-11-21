@@ -24,29 +24,31 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping(path = "/user")
 public class UserController {
     public static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-    @Autowired
-    DiscoveryClient discoveryClient;
 
-    @RequestMapping(path = "{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "info/{id}", method = RequestMethod.GET)
     @ApiOperation(value = "根据用户编码获取信息", notes = "根据用户编码获取信息")
-    public User get(@PathVariable
-                    @ApiParam(required = true, name = "id", value = "用户编码")
-                            long id) throws InterruptedException {
-//        for (String serviceId : discoveryClient.getServices()) {
-//            List<ServiceInstance> clientInstances = discoveryClient.getInstances(serviceId);
-//            LOGGER.error("{} {}", serviceId, clientInstances.size());
-//            for (ServiceInstance clientInstance : clientInstances) {
-//                LOGGER.error("--{}:{} {} {}", clientInstance.getHost(), clientInstance.getPort(), clientInstance.getServiceId(), clientInstance.getUri());
-//                for (Map.Entry<String, String> entry : clientInstance.getMetadata().entrySet()) {
-//                    LOGGER.error("----{}:{}", entry.getKey(), entry.getValue());
-//                }
-//            }
-//        }
+    public User info(@PathVariable
+                     @ApiParam(required = true, name = "id", value = "用户编码")
+                             long id) throws InterruptedException {
 
-        LOGGER.error("begin id:{}", id);
-        int sleep = ThreadLocalRandom.current().nextInt(3000);
-        Thread.sleep(sleep);
-        LOGGER.error("end id:{} sleep:{}" ,  id  , sleep);
+        sleep();
         return new User(id, "刘锐 " + id);
+    }
+
+    @RequestMapping(path = "login/{id}", method = RequestMethod.GET)
+    @ApiOperation(value = "登录", notes = "登录")
+    public String login(String name, String password) {
+        sleep();
+        return String.format("name:%s password:%s", name, password);
+    }
+
+    private long sleep() {
+        int sleep = ThreadLocalRandom.current().nextInt(3000);
+        try {
+            Thread.sleep(sleep);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return sleep;
     }
 }

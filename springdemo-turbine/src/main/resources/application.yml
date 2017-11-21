@@ -7,10 +7,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka/
-  instance:
-    metadata-map:
-      management.port: ${management.port:8061}
 turbine:
-  app-config: Order
   combine-host-port: true
   clusterNameExpression: "'default'"
+  app-config: Order,News

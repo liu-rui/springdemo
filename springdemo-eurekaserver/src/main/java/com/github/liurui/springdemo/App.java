@@ -15,8 +15,5 @@ public class App {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
-        Environment environment = context.getBean(Environment.class);
-        System.out.println(Arrays.toString(environment.getActiveProfiles()));
-        System.out.println(environment.getProperty("server.port"));
     }
 }

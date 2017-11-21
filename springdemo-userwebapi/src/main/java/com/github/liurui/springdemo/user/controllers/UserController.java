@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import sun.rmi.runtime.Log;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
 @Api(tags = "用户", description = "用户基本操作")
@@ -29,17 +31,22 @@ public class UserController {
     @ApiOperation(value = "根据用户编码获取信息", notes = "根据用户编码获取信息")
     public User get(@PathVariable
                     @ApiParam(required = true, name = "id", value = "用户编码")
-                            String id) {
-        for (String serviceId : discoveryClient.getServices()) {
-            List<ServiceInstance> clientInstances = discoveryClient.getInstances(serviceId);
-            LOGGER.error("{} {}", serviceId, clientInstances.size());
-            for (ServiceInstance clientInstance : clientInstances) {
-                LOGGER.error("--{}:{} {} {}", clientInstance.getHost(), clientInstance.getPort(), clientInstance.getServiceId(), clientInstance.getUri());
-                for (Map.Entry<String, String> entry : clientInstance.getMetadata().entrySet()) {
-                    LOGGER.error("----{}:{}", entry.getKey(), entry.getValue());
-                }
-            }
-        }
-        return new User(1, "刘锐 " + id);
+                            long id) throws InterruptedException {
+//        for (String serviceId : discoveryClient.getServices()) {
+//            List<ServiceInstance> clientInstances = discoveryClient.getInstances(serviceId);
+//            LOGGER.error("{} {}", serviceId, clientInstances.size());
+//            for (ServiceInstance clientInstance : clientInstances) {
+//                LOGGER.error("--{}:{} {} {}", clientInstance.getHost(), clientInstance.getPort(), clientInstance.getServiceId(), clientInstance.getUri());
+//                for (Map.Entry<String, String> entry : clientInstance.getMetadata().entrySet()) {
+//                    LOGGER.error("----{}:{}", entry.getKey(), entry.getValue());
+//                }
+//            }
+//        }
+
+        LOGGER.error("begin id:{}", id);
+        int sleep = ThreadLocalRandom.current().nextInt(3000);
+        Thread.sleep(sleep);
+        LOGGER.error("end id:{} sleep:{}" ,  id  , sleep);
+        return new User(id, "刘锐 " + id);
     }
 }

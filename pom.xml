@@ -14,6 +14,9 @@
         <module>springdemo-orderwebapi</module>
         <module>springdemo-swagger</module>
         <module>springdemo-eurekaserver</module>
+        <module>springdemo-hystrixdashboard</module>
+        <module>springdemo-turbine</module>
+        <module>springdemo-newswebapi</module>
     </modules>
     <packaging>pom</packaging>
     <name>springdemo</name>

@@ -2,6 +2,7 @@ package com.github.liurui.springdemo.order.controllers;
 
 import com.github.liurui.springdemo.order.entities.Order;
 import com.github.liurui.springdemo.order.entities.User;
+import com.github.liurui.springdemo.order.services.UserService;
 import com.google.common.collect.Maps;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
@@ -19,23 +20,17 @@ import java.util.HashMap;
 public class OrderController {
     public static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
     @Autowired
-    RestTemplate restTemplate;
+    UserService userService;
 
     @RequestMapping(method = RequestMethod.POST)
     public Order create(@ApiParam(name = "userId", value = "用户编码", required = true)
                         @RequestParam
-                                String userId,
+                                long userId,
                         @RequestParam
                         @ApiParam(name = "amount", value = "金额", required = true)
                                 float amount) {
-
-        HashMap<String,String> map = Maps.newHashMap();
-
-        map.put("name" , "ren");
-        map.put("code" , "34");
-        User user = restTemplate.getForObject("http://user/user/{code}{name}", User.class , map);
-
-        LOGGER.error(user.toString());
-        return new Order(1, Long.valueOf(userId), "刘锐", amount);
+        User user = userService.get(userId);
+        LOGGER.error("controller  {}" , user);
+        return new Order(1, Long.valueOf(userId), user.getName(), amount);
     }
 }

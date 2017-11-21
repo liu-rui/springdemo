@@ -1,13 +1,13 @@
 spring:
   application:
-    name: Order
+    name: News
 server:
-  port: 8101
+  port: 8201
 restApi:
   swagger:
-    title: springdemo-订单webapi
+    title: springdemo-新闻webapi
     version: 1
-    description: 订单webapi!！！
+    description: 新闻webapi!！！
 eureka:
   client:
     service-url:

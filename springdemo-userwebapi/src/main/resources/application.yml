@@ -1,6 +1,9 @@
 spring:
   application:
     name: User
+  devtools:
+    restart:
+      exclude:
 server:
   port: 8091
 restApi:

@@ -1,5 +1,6 @@
 package com.github.liurui.springdemo;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.SpringCloudApplication;
@@ -10,6 +11,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableDiscoveryClient
 public class App {
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new SpringApplicationBuilder().sources(App.class).run(args);
+        SpringApplication.run(App.class , args);
     }
 }

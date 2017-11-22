@@ -9,6 +9,9 @@
     <groupId>com.github.liurui.springdemo</groupId>
     <artifactId>springdemo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>springdemo</name>
+    <url>http://maven.apache.org</url>
     <modules>
         <module>springdemo-userwebapi</module>
         <module>springdemo-orderwebapi</module>
@@ -18,36 +21,9 @@
         <module>springdemo-turbine</module>
         <module>springdemo-newswebapi</module>
         <module>springdemo-commondatawebapi</module>
+        <module>springdemo-userdriver</module>
+        <module>springdemo-commondatadriver</module>
     </modules>
-    <packaging>pom</packaging>
-    <name>springdemo</name>
-    <url>http://maven.apache.org</url>
-    <properties>
-        <spring-cloud.version>Finchley.M4</spring-cloud.version>
-    </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>springdemo-swagger</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
     <repositories>
         <repository>
             <id>spring-snapshots</id>
@@ -84,4 +60,44 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+    <properties>
+        <spring-cloud.version>Finchley.M4</spring-cloud.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>springdemo-swagger</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>springdemo-userdriver</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>springdemo-commondatadriver</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

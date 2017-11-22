@@ -1,4 +1,4 @@
-package com.github.liurui.springdemo.news.entities;
+package com.github.liurui.springdemo.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

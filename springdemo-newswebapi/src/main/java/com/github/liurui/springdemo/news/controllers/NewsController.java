@@ -1,9 +1,9 @@
 package com.github.liurui.springdemo.news.controllers;
 
 
-import com.github.liurui.springdemo.news.entities.User;
-import com.github.liurui.springdemo.news.services.CityService;
-import com.github.liurui.springdemo.news.services.UserService;
+import com.github.liurui.springdemo.news.repositories.CityApiRepository;
+import com.github.liurui.springdemo.news.repositories.UserApiRepository;
+import com.github.liurui.springdemo.user.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/news")
 public class NewsController {
     public static final Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
+
     @Autowired
-    UserService userService;
+    UserApiRepository userApiRepository;
+
     @Autowired
-    CityService cityService;
+    CityApiRepository cityApiRepository;
 
     @RequestMapping(method = RequestMethod.POST)
     public String create(@ApiParam(name = "userId", value = "用户编码", required = true)
@@ -28,10 +30,12 @@ public class NewsController {
                          @RequestBody
                          @ApiParam(name = "news", value = "新闻", required = true)
                                  String news) {
-        User user = userService.get(userId);
+        User user = userApiRepository.info(userId);
         LOGGER.error("controller  {}", user);
-        LOGGER.error("controller  {}", userService.login("sd", "sdd"));
-        LOGGER.error("controller  {}", cityService.get(String.valueOf(userId)));
-        return String.format("userid:%s name:%s news:%s", user.getId(), user.getName(), news);
+        LOGGER.error("controller  {}", userApiRepository.login("sd", "sdd"));
+        String city = cityApiRepository.get(String.valueOf(userId));
+        LOGGER.error("controller  {}", city);
+//        return city;
+        return String.format("userid:%s name:%s news:%s city:%s", user.getId(), user.getName(), news , city);
     }
 }

@@ -12,15 +12,28 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka/
-User:
-  ribbon:
-    MaxAutoRetries: 2
-    MaxAutoRetriesNextServer: 2
-    OkToRetryOnAllOperations: true
-    ConnectTimeout: 250
-    ReadTimeout: 500
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2000
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 1000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: true
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 3000
 management:
   endpoints:
     web:
       base-path:
+logging:
+  level:
+    com.github.liurui.springdemo.news.repositories.CityApiRepository: debug
+    com.github.liurui.springdemo.news.repositories.UserApiRepository: debug
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true

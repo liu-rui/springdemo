@@ -23,6 +23,7 @@
         <module>springdemo-commondatawebapi</module>
         <module>springdemo-userdriver</module>
         <module>springdemo-commondatadriver</module>
+        <module>springdemo-gateway</module>
     </modules>
     <repositories>
         <repository>

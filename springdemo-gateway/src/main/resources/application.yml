@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: gateway
+server:
+  port: 8051
+zuul:
+  routes:
+    user:
+      path: /user/**
+      url: https://www.baidu.com
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/

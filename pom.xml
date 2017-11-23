@@ -24,6 +24,8 @@
         <module>springdemo-userdriver</module>
         <module>springdemo-commondatadriver</module>
         <module>springdemo-gateway</module>
+        <module>springdemo-configserver</module>
+        <module>springdemo-configclient</module>
     </modules>
     <repositories>
         <repository>

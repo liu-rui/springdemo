@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ConfigClient
+  cloud:
+    config:
+      profile: prod
+      uri: http://localhost:8041
+      label: label1
+server:
+  port: 8043

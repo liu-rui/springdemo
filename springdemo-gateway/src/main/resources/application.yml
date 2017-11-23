@@ -3,12 +3,19 @@ spring:
     name: gateway
 server:
   port: 8051
-zuul:
-  routes:
-    user:
-      path: /user/**
-      url: https://www.baidu.com
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka/
+zuul:
+  retryable: true
+  host:
+    socketTimeoutMillis: 2000
+#  prefix: api
+ribbon:
+  ConnectTimeout: 2000
+  ReadTimeout: 2000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: true
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 10000

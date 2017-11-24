@@ -2,7 +2,7 @@ server:
   port: 8043
 spring:
   application:
-    name: ConfigClient
+    name: project1
   cloud:
     config:
       profile: prod

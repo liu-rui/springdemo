@@ -3,7 +3,7 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:liu-rui/springdemo-config.git
+          uri: git@172.18.115.136:group1/{application}-config.git
           force-pull: true
       fail-fast: true
   application:

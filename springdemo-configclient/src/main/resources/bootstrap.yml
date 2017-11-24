@@ -1,10 +1,22 @@
+server:
+  port: 8043
 spring:
   application:
     name: ConfigClient
   cloud:
     config:
       profile: prod
-      uri: http://localhost:8041
-      label: label1
-server:
-  port: 8043
+#      uri: http://localhost:8041
+      label: v1
+      discovery:
+        enabled: true
+        service-id: ConfigServer
+# 固定为user
+#      username: user
+# TODO：密码由configserver自动生成，需要查看configserver启动日志得到;需要自定义
+#      password: aed9b64b-e730-454a-b192-6981c590c9c8
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
+    register-with-eureka: false

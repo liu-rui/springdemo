@@ -3,12 +3,14 @@ spring:
     config:
       server:
         git:
-          uri: http://172.18.115.136/group1/project1.git
-          username: root
-          password: 123456789
-          search-paths: {application}
+          uri: git@github.com:liu-rui/springdemo-config.git
           force-pull: true
+      fail-fast: true
   application:
     name: ConfigServer
 server:
   port: 8041
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka/

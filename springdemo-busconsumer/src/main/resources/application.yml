@@ -1,0 +1,7 @@
+spring:
+  rabbitmq:
+    host: 172.18.115.15
+    username: guest
+    password: guest
+server:
+  port: 8625

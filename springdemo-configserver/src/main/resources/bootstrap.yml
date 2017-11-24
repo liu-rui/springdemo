@@ -5,6 +5,12 @@ spring:
         git:
           uri: git@172.18.115.136:group1/{application}-config.git
           force-pull: true
+        health:
+          repositories:
+            check:
+              name: project1
+              label: master
+              profiles: default
       fail-fast: true
   application:
     name: ConfigServer
@@ -14,3 +20,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka/
+management:
+  security:
+    enabled: false

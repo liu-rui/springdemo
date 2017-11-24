@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.M6</version>
+        <version>1.5.8.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.liurui.springdemo</groupId>
@@ -26,6 +26,8 @@
         <module>springdemo-gateway</module>
         <module>springdemo-configserver</module>
         <module>springdemo-configclient</module>
+        <module>springdemo-busproducer</module>
+        <module>springdemo-busconsumer</module>
     </modules>
     <repositories>
         <repository>
@@ -64,7 +66,7 @@
         </pluginRepository>
     </pluginRepositories>
     <properties>
-        <spring-cloud.version>Finchley.M4</spring-cloud.version>
+        <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>

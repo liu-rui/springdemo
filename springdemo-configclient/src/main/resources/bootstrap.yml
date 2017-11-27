@@ -20,3 +20,6 @@ eureka:
     service-url:
       defaultZone: http://localhost:8081/eureka/
     register-with-eureka: false
+management:
+  security:
+    enabled: false

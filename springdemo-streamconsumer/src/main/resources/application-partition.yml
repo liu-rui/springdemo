@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: p-input
+          binder: rabbit1
+          group: GroupA
+          consumer:
+            partitioned: true
+            instanceCount: 2
+      binders:
+        rabbit1:
+          type: rabbit
+          defaultCandidate: false
+          environment:
+            spring:
+              rabbitmq:
+                host: 172.18.115.15
+                username: guest
+                password: guest
+server:
+  port: 8626

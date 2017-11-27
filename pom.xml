@@ -28,6 +28,8 @@
         <module>springdemo-configclient</module>
         <module>springdemo-busproducer</module>
         <module>springdemo-busconsumer</module>
+        <module>springdemo-streamconsumer</module>
+        <module>springdemo-streamproducer</module>
     </modules>
     <repositories>
         <repository>

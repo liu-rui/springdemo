@@ -1,0 +1,12 @@
+spring:
+  rabbitmq:
+    host: 172.18.115.15
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: input
+server:
+  port: 8627

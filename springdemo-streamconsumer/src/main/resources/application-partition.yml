@@ -1,11 +1,19 @@
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://172.18.115.132:3306/lr_logtest
+    username: base
+    password: base1234
   cloud:
     stream:
       bindings:
         input:
           destination: p-input
-          binder: rabbit1
+          binder: kafka1
           group: GroupA
+          content-type: application/json
           consumer:
             partitioned: true
             instanceCount: 2
@@ -19,5 +27,12 @@ spring:
                 host: 172.18.115.15
                 username: guest
                 password: guest
+        kafka1:
+          type: kafka
+          defaultCandidate: false
+          environment:
+            spring.cloud.stream.kafka.binder:
+              brokers: 172.18.115.47,172.18.115.48,172.18.115.49
+              zkNodes: 172.18.115.47,172.18.115.48,172.18.115.49
 server:
   port: 8626

@@ -1,9 +1,11 @@
 package com.github.liurui.springdemo;
 
+import java.io.Serializable;
+
 public class User {
     private int id;
 
-    private  String name;
+    private String name;
 
     public User() {
     }

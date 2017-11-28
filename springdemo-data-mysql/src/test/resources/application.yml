@@ -1,0 +1,8 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://172.18.115.132:3306/lr_logtest
+    username: base
+    password: base1234

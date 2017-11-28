@@ -1,5 +1,6 @@
 package com.github.liurui.springdemo.partition;
 
+import com.github.liurui.springdemo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -14,8 +15,8 @@ public class App {
     public static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     @StreamListener(Sink.INPUT)
-    public void receive(String msg) {
-        LOGGER.error(msg);
+    public void receive(User msg) {
+        LOGGER.error(msg.toString());
     }
 
     public static void main(String[] args) {

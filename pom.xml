@@ -31,6 +31,8 @@
         <module>springdemo-streamconsumer</module>
         <module>springdemo-streamproducer</module>
         <module>springdemo-data-mysql</module>
+        <module>springdemo-log</module>
+        <module>springdemo-zipkinserver</module>
     </modules>
     <repositories>
         <repository>
@@ -119,6 +121,28 @@
                 <artifactId>springdemo-data-mysql</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>4.11</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.danielwegener</groupId>
+                <artifactId>logback-kafka-appender</artifactId>
+                <version>0.1.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

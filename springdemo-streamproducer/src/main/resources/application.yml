@@ -1,2 +1,5 @@
 server:
   port: 8627
+spring:
+  profiles:
+    active: partition

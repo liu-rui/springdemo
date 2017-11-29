@@ -19,7 +19,7 @@ public class CityController implements CityApi {
 
     @Override
     public String get(@PathVariable("id") String id) {
-        String ret = String.format("id:%s name:%s  sleep:%d", id, "城市名beijing", sleep());
+        String ret = String.format("id:%s name:%s  sleep:%d", id, "城市名beijing", -1);
         LOGGER.error(ret);
         return ret;
     }

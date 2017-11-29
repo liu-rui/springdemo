@@ -35,7 +35,8 @@ public class NewsController {
         LOGGER.error("controller  {}", userApiRepository.login("sd", "sdd"));
         String city = cityApiRepository.get(String.valueOf(userId));
         LOGGER.error("controller  {}", city);
+        return city;
 //        return city;
-        return String.format("userid:%s name:%s news:%s city:%s", user.getId(), user.getName(), news , city);
+//        return String.format("userid:%s name:%s news:%s city:%s", user.getId(), user.getName(), news , city);
     }
 }

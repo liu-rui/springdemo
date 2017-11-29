@@ -17,14 +17,13 @@ public class UserController implements UserApi {
     @Override
     public User info(@PathVariable long id) {
         User user =  new User(id, "刘锐 " + id);
-
-        LOGGER.error("user:{}  sleep:{}" , user.toString() , sleep());
+        LOGGER.error("user:{}  sleep:{}" , user.toString() , -1);
         return user;
     }
 
     @Override
     public String login(@RequestParam String name, @RequestParam String password) {
-        String ret =  String.format("name:%s password:%s sleep:%d", name, password , sleep());
+        String ret =  String.format("name:%s password:%s sleep:%d", name, password ,-1);
         LOGGER.error(ret);
         return ret;
     }

@@ -15,7 +15,7 @@ spring:
           binder: kafka1
           producer:
             partitionCount: 2
-            partitionKeyExpression: payload
+            partitionKeyExpression: payload.id
       binders:
         rabbit1:
           type: rabbit
